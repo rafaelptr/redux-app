@@ -1,22 +1,38 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { clickButton } from './actions';
+import { Titulo } from './components/titulo';
 import './App.css';
 
 class App extends Component {
+
+  state = {
+    inputValue: ''
+  }
+
+  inputChange = event => {
+    this.setState({ inputValue: event.target.value });
+  }
+
   render() {
-    const {newValue} = this.props;
+    const { newValue, clickButton } = this.props;
+    const { inputValue } = this.state;
     return (
       <div className="App" style={{ paddingTop: '10px' }}>
-        <input type='text' />
-        <button type="button">Click Me!</button>
-        <h1>{newValue}</h1>
+        <input type='text' value={inputValue} onChange={this.inputChange} />
+        <button onClick={() => clickButton(inputValue)}>Click Me!</button>
+        <Titulo>{newValue}</Titulo>
       </div>
     )
   }
 }
 
 const mapStateToProps = store => ({
-  newValue : store.clickState.newValue
+  newValue: store.clickState.newValue
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ clickButton }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

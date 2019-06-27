@@ -6,6 +6,6 @@ import React from 'react';
  *  attributos
  *      variavel=valor
  */
-export const Paragraph = (props) =>  (   
-    <p>{props.variavel}</p>
+export const Titulo = (props) =>  (   
+    <h1>{props.children}</h1>
 )
