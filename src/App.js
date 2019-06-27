@@ -22,7 +22,7 @@ class App extends Component {
       <div className="App" style={{ paddingTop: '10px' }}>
         <input type='text' value={inputValue} onChange={this.inputChange} />
         <button onClick={() => clickButton(inputValue)}>Click Me!</button>
-        <Titulo>{newValue}</Titulo>
+        <Titulo texto={newValue} />
       </div>
     )
   }

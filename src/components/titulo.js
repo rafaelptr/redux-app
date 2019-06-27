@@ -7,5 +7,5 @@ import React from 'react';
  *      variavel=valor
  */
 export const Titulo = (props) =>  (   
-    <h1>{props.children}</h1>
+    <h1>{props.texto}</h1>
 )
